@@ -13,8 +13,10 @@ json_string = f.read()
 parsed_json = json.loads(json_string)
 location = parsed_json['location']['city']
 temp_f = parsed_json['current_observation']['temp_f']
+humidity = parsed_json['current_observation']['relative_humidity']
+feelslike_f = parsed_json['current_observation']['feelslike_f']
 weather = parsed_json['current_observation']['weather']
-weather_out = "The current weather in %s is: %sF and %s" % (location, temp_f, weather)
+weather_out = "The current weather in %s is: %sF with a Relative Humidity of %s. It feels like %sF and %s" % (location, temp_f, humidity, feelslike_f, weather)
 f.close()
 
 # You'll need to have your Spark Authentication Token and put itin the Authorization Header
